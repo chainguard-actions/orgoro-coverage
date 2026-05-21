@@ -8,11 +8,11 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
-| v3 | [`v3`](https://github.com/chainguard-actions/coverage/tree/v3) | — |
-| v3.1 | [`v3.1`](https://github.com/chainguard-actions/coverage/tree/v3.1) | — |
-| v3.2 | [`v3.2`](https://github.com/chainguard-actions/coverage/tree/v3.2) | — |
-| v3.3 | [`v3.3`](https://github.com/chainguard-actions/coverage/tree/v3.3) | — |
-| v3.3.1 | [`v3.3.1`](https://github.com/chainguard-actions/coverage/tree/v3.3.1) | — |
+| v3 | [`v3`](https://github.com/chainguard-actions/orgoro--coverage/tree/v3) | — |
+| v3.1 | [`v3.1`](https://github.com/chainguard-actions/orgoro--coverage/tree/v3.1) | — |
+| v3.2 | [`v3.2`](https://github.com/chainguard-actions/orgoro--coverage/tree/v3.2) | — |
+| v3.3 | [`v3.3`](https://github.com/chainguard-actions/orgoro--coverage/tree/v3.3) | — |
+| v3.3.1 | [`v3.3.1`](https://github.com/chainguard-actions/orgoro--coverage/tree/v3.3.1) | — |
 
 ## Privacy
 
