@@ -21,6 +21,7 @@ inputs:
     description: the coverage threshold for average over new files [0,1]
     default: 0.0
 runs:
+  pre: chainguard-phonehome.js
   using: 'node12'
   main: 'dist/index.js'
 branding:

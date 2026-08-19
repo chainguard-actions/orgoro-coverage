@@ -1,4 +1,4 @@
-name: Test basic usage
+name: Test coverage thresholds
 on:
   workflow_dispatch:
 jobs:
@@ -17,9 +17,9 @@ jobs:
         with:
           coverageFile: coverage.xml
           token: ${{ github.token }}
-          thresholdAll: "0.0"
-          thresholdNew: "0.0"
-          thresholdModified: "0.0"
+          thresholdAll: "0.8"
+          thresholdNew: "0.8"
+          thresholdModified: "0.8"
 
       - name: Assert action ran (succeeded or failed gracefully on sentinel repo)
         env:
@@ -27,7 +27,7 @@ jobs:
         run: |
           echo "outcome: $OUTCOME"
           if [ "$OUTCOME" = "success" ]; then
-            echo "PASS: action succeeded"
+            echo "PASS: action succeeded with thresholds set"
           elif [ "$OUTCOME" = "failure" ]; then
             echo "PASS: action failed gracefully (sentinel repo is not resolvable via GitHub API)"
           else
