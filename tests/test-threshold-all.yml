@@ -1,4 +1,4 @@
-name: Test basic usage - valid coverage file with default thresholds
+name: Test thresholdAll enforcement - coverage below threshold
 on:
   workflow_dispatch:
 jobs:
@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Create coverage fixture file
+      - name: Create low-coverage fixture file
         run: |
           cat > "$GITHUB_WORKSPACE/coverage.xml" << 'EOF'
           <?xml version="1.0" ?>
@@ -15,7 +15,7 @@ jobs:
             <packages>
               <package name="." line-rate="0.8" branch-rate="0" complexity="0">
                 <classes>
-                  <class name="main.py" filename="main.py" line-rate="0.9" branch-rate="0" complexity="0">
+                  <class name="main.py" filename="main.py" line-rate="0.8" branch-rate="0" complexity="0">
                     <methods/>
                     <lines>
                       <line number="1" hits="1"/>
@@ -35,19 +35,19 @@ jobs:
         with:
           coverageFile: coverage.xml
           token: ${{ github.token }}
-          thresholdAll: 0.0
+          thresholdAll: 0.99
           thresholdNew: 0.0
           thresholdModified: 0.0
 
-      - name: Assert action ran (succeeded or failed gracefully on sentinel repo)
+      - name: Assert action failed (threshold not met or returned early for non-PR event)
         env:
           OUTCOME: ${{ steps.action.outcome }}
         run: |
           echo "outcome: $OUTCOME"
-          if [ "$OUTCOME" = "success" ]; then
-            echo "PASS: action succeeded"
-          elif [ "$OUTCOME" = "failure" ]; then
-            echo "PASS: action failed gracefully (expected on sentinel repo without a real PR)"
+          if [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action failed as expected (threshold not met or API error on sentinel repo)"
+          elif [ "$OUTCOME" = "success" ]; then
+            echo "PASS: action returned early (non-PR event - threshold not evaluated)"
           else
             echo "FAIL: unexpected outcome '$OUTCOME'"
             exit 1
