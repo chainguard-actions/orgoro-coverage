@@ -9,7 +9,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
 | v3 | [`v3`](https://github.com/chainguard-actions/orgoro-coverage/tree/v3) | [`d77626a`](https://github.com/orgoro/coverage/commit/d77626a5fa35d39123e86d6c62907fabe2491496) |
-| v3.1 | [`v3.1`](https://github.com/chainguard-actions/orgoro-coverage/tree/v3.1) | — |
+| v3.1 | [`v3.1`](https://github.com/chainguard-actions/orgoro-coverage/tree/v3.1) | [`4e3bc93`](https://github.com/orgoro/coverage/commit/4e3bc9302f715595336a40f7dd4a3b15c687bdb4) |
 | v3.2 | [`v3.2`](https://github.com/chainguard-actions/orgoro-coverage/tree/v3.2) | — |
 | v3.3 | [`v3.3`](https://github.com/chainguard-actions/orgoro-coverage/tree/v3.3) | — |
 | v3.3.1 | [`v3.3.1`](https://github.com/chainguard-actions/orgoro-coverage/tree/v3.3.1) | — |
