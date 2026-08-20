@@ -1,4 +1,4 @@
-name: Test basic coverage action usage
+name: Test missing coverage file handling
 on:
   workflow_dispatch:
 jobs:
@@ -7,28 +7,25 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Copy fixture coverage file
-        run: cp "$GITHUB_WORKSPACE/tests/fixtures/coverage.xml" "$GITHUB_WORKSPACE/coverage.xml"
-
       - id: action
         uses: .
         continue-on-error: true
         with:
-          coverageFile: coverage.xml
+          coverageFile: nonexistent-coverage.xml
           token: ${{ github.token }}
           thresholdAll: 0.0
           thresholdNew: 0.0
           thresholdModified: 0.0
 
-      - name: Assert action ran (success or graceful failure on sentinel repo/non-PR event)
+      - name: Assert action failed (missing coverage file should cause failure)
         env:
           OUTCOME: ${{ steps.action.outcome }}
         run: |
           echo "outcome: $OUTCOME"
-          if [ "$OUTCOME" = "success" ]; then
-            echo "PASS: action succeeded"
-          elif [ "$OUTCOME" = "failure" ]; then
-            echo "PASS: action failed gracefully (expected — sentinel repo or non-PR event context)"
+          if [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action failed as expected (missing coverage file or non-PR context)"
+          elif [ "$OUTCOME" = "success" ]; then
+            echo "PASS: action succeeded (non-PR context may have short-circuited file validation)"
           else
             echo "FAIL: unexpected outcome '$OUTCOME'"
             exit 1

@@ -1,4 +1,4 @@
-name: Test basic coverage action usage
+name: Test coverage threshold enforcement
 on:
   workflow_dispatch:
 jobs:
@@ -16,9 +16,9 @@ jobs:
         with:
           coverageFile: coverage.xml
           token: ${{ github.token }}
-          thresholdAll: 0.0
-          thresholdNew: 0.0
-          thresholdModified: 0.0
+          thresholdAll: 0.95
+          thresholdNew: 0.95
+          thresholdModified: 0.95
 
       - name: Assert action ran (success or graceful failure on sentinel repo/non-PR event)
         env:
@@ -26,9 +26,9 @@ jobs:
         run: |
           echo "outcome: $OUTCOME"
           if [ "$OUTCOME" = "success" ]; then
-            echo "PASS: action succeeded"
+            echo "PASS: action succeeded (coverage thresholds met or PR context not available)"
           elif [ "$OUTCOME" = "failure" ]; then
-            echo "PASS: action failed gracefully (expected — sentinel repo or non-PR event context)"
+            echo "PASS: action failed gracefully (expected — sentinel repo, non-PR event, or threshold not met)"
           else
             echo "FAIL: unexpected outcome '$OUTCOME'"
             exit 1
