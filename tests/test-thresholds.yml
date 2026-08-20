@@ -1,0 +1,36 @@
+name: Test threshold inputs accepted (non-PR event exits gracefully)
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Create a coverage XML file with high coverage
+        run: |
+          cat > /tmp/coverage-high.xml <<'EOF'
+          <sources>
+            <source>src</source>
+          </sources>
+          <coverage version="6.0" timestamp="1633536330812" lines-valid="1000" lines-covered="950" line-rate="0.95" branches-covered="0" branches-valid="0" branch-rate="0" complexity="0">
+            <class branch-rate="0" complexity="0" filename="app.py" line-rate="0.95" name="app.py">
+            </class>
+            <class branch-rate="0" complexity="0" filename="utils.py" line-rate="0.98" name="utils.py">
+            </class>
+          </coverage>
+          EOF
+
+      - id: action
+        uses: .
+        with:
+          coverageFile: /tmp/coverage-high.xml
+          token: ${{ github.token }}
+          thresholdAll: "0.8"
+          thresholdNew: "0.8"
+          thresholdModified: "0.8"
+
+      - name: Assert action completed successfully with thresholds on non-PR event
+        run: |
+          echo "Action completed without error on workflow_dispatch event with thresholds set"
+          echo "PASS: action exits gracefully when event is not pull_request (thresholds are not evaluated)"

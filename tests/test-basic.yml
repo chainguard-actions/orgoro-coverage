@@ -1,26 +1,31 @@
-name: Test basic usage
+name: Test basic usage (non-PR event exits gracefully)
 on:
   workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_EVENT_NAME: pull_request
-      GITHUB_REF: refs/pull/1/merge
-      GITHUB_HEAD_REF: feature-branch
-      GITHUB_BASE_REF: main
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Create a minimal coverage XML file
+        run: |
+          cat > /tmp/coverage.xml <<'EOF'
+          <sources>
+            <source>src</source>
+          </sources>
+          <coverage version="6.0" timestamp="1633536330812" lines-valid="100" lines-covered="90" line-rate="0.9" branches-covered="0" branches-valid="0" branch-rate="0" complexity="0">
+            <class branch-rate="0" complexity="0" filename="main.py" line-rate="0.9" name="main.py">
+            </class>
+          </coverage>
+          EOF
+
       - id: action
         uses: .
         with:
-          coverageFile: ${{ github.workspace }}/actions/hardened/orgoro--coverage/v3.2/tests/fixtures/coverage.xml
-          token: fake-token-for-testing
-          thresholdAll: "0.0"
-          thresholdNew: "0.0"
-          thresholdModified: "0.0"
-        continue-on-error: true
-      - name: Assert action ran
+          coverageFile: /tmp/coverage.xml
+          token: ${{ github.token }}
+
+      - name: Assert action completed successfully on non-PR event
         run: |
-          echo "Action completed (may fail due to fake token, but inputs were accepted)"
-          echo "PASS"
+          echo "Action completed without error on workflow_dispatch event"
+          echo "PASS: action exits gracefully when event is not pull_request"
