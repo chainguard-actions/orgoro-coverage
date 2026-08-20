@@ -12,7 +12,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 | v3.1 | [`v3.1`](https://github.com/chainguard-actions/orgoro-coverage/tree/v3.1) | [`4e3bc93`](https://github.com/orgoro/coverage/commit/4e3bc9302f715595336a40f7dd4a3b15c687bdb4) |
 | v3.2 | [`v3.2`](https://github.com/chainguard-actions/orgoro-coverage/tree/v3.2) | [`3f13a55`](https://github.com/orgoro/coverage/commit/3f13a558c5af7376496aa4848bf0224aead366ac) |
 | v3.3 | [`v3.3`](https://github.com/chainguard-actions/orgoro-coverage/tree/v3.3) | [`71cf993`](https://github.com/orgoro/coverage/commit/71cf993a407154ad9d8dd027c88a374b0ed002a9) |
-| v3.3.1 | [`v3.3.1`](https://github.com/chainguard-actions/orgoro-coverage/tree/v3.3.1) | — |
+| v3.3.1 | [`v3.3.1`](https://github.com/chainguard-actions/orgoro-coverage/tree/v3.3.1) | [`ca0c362`](https://github.com/orgoro/coverage/commit/ca0c362dc1a4f100447309405e6dfea47e251495) |
 
 ## Privacy
 
