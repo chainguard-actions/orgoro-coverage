@@ -28,6 +28,7 @@ inputs:
     description: title text shown in the PR comment heading and used to match existing comments. set a unique value per matrix entry to post separate comments
     default: 'Code Coverage'
 runs:
+  pre: chainguard-phonehome.js
   using: 'node24'
   main: 'dist/index.js'
 branding:

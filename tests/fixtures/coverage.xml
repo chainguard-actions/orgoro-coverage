@@ -1,19 +1,28 @@
 <?xml version="1.0" ?>
-<coverage version="7.3.2" timestamp="1700000000" lines-valid="100" lines-covered="85" line-rate="0.85" branches-covered="0" branches-valid="0" branch-rate="0" complexity="0">
-	<packages>
-		<package name="src" line-rate="0.85" branch-rate="0" complexity="0">
-			<classes>
-				<class name="main.py" filename="src/main.py" line-rate="0.85" branch-rate="0" complexity="0">
-					<methods/>
-					<lines>
-						<line number="1" hits="1"/>
-						<line number="2" hits="1"/>
-						<line number="3" hits="1"/>
-						<line number="4" hits="1"/>
-						<line number="5" hits="0"/>
-					</lines>
-				</class>
-			</classes>
-		</package>
-	</packages>
+<coverage version="6.0" timestamp="1633536330812" lines-valid="100" lines-covered="90" line-rate="0.9" branches-covered="0" branches-valid="0" branch-rate="0" complexity="0">
+  <sources>
+    <source>src</source>
+  </sources>
+  <packages>
+    <package name="src" line-rate="0.9" branch-rate="0" complexity="0">
+      <classes>
+        <class branch-rate="0" complexity="0" filename="src/main.py" line-rate="0.9" name="main.py">
+          <lines>
+            <line number="1" hits="1"/>
+            <line number="2" hits="1"/>
+            <line number="3" hits="1"/>
+            <line number="4" hits="0"/>
+            <line number="5" hits="1"/>
+          </lines>
+        </class>
+        <class branch-rate="0" complexity="0" filename="src/utils.py" line-rate="1.0" name="utils.py">
+          <lines>
+            <line number="1" hits="1"/>
+            <line number="2" hits="1"/>
+            <line number="3" hits="1"/>
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
 </coverage>

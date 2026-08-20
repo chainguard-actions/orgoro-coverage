@@ -1,4 +1,4 @@
-name: Test basic usage (non-PR event exits early)
+name: Test with coverage thresholds (non-PR event exits early)
 on:
   workflow_dispatch:
 jobs:
@@ -16,8 +16,11 @@ jobs:
         with:
           coverageFile: coverage.xml
           token: ${{ github.token }}
+          thresholdAll: "0.8"
+          thresholdNew: "0.9"
+          thresholdModified: "0.85"
 
-      - name: Assert action succeeded (non-PR event exits early)
+      - name: Assert action succeeded with threshold inputs
         run: |
-          echo "Action completed successfully for non-PR event"
-          echo "PASS: action exits early when event is not pull_request"
+          echo "Action completed successfully with threshold inputs on non-PR event"
+          echo "PASS: action accepts threshold inputs and exits early when event is not pull_request"

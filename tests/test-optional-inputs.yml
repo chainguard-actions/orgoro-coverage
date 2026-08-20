@@ -1,4 +1,4 @@
-name: Test basic usage (non-PR event exits early)
+name: Test optional inputs (title and sourceDir)
 on:
   workflow_dispatch:
 jobs:
@@ -16,8 +16,11 @@ jobs:
         with:
           coverageFile: coverage.xml
           token: ${{ github.token }}
+          sourceDir: src
+          title: "My Custom Coverage Report"
+          thresholdAll: "0.5"
 
-      - name: Assert action succeeded (non-PR event exits early)
+      - name: Assert action succeeded with optional inputs
         run: |
-          echo "Action completed successfully for non-PR event"
-          echo "PASS: action exits early when event is not pull_request"
+          echo "Action completed successfully with optional inputs on non-PR event"
+          echo "PASS: action accepts title and sourceDir inputs and exits early when event is not pull_request"
