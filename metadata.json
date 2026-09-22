@@ -1,7 +1,0 @@
-{
-  "owner": "orgoro",
-  "name": "coverage",
-  "visibility": "public",
-  "description": "Publish coverage report to a PR \u0026 enforce coverage on new \u0026 modified files",
-  "block_publish": false
-}
