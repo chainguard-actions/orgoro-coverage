@@ -4,8 +4,13 @@
   "version": "v3.3",
   "commit_sha": "71cf993a407154ad9d8dd027c88a374b0ed002a9",
   "url": "https://github.com/orgoro/coverage",
-  "policy_sha": "d636be7e43ef829af6e853da6b3c7566db9f72fe",
+  "policy_sha": "374911c4be584df24e6da57af2d990570ef0f859",
   "test_policy_sha": "843adf9e4b8f85d0c08b27b9d0b09dd094b54702",
   "test_agent_version": "2",
-  "harden_agent_version": "2"
+  "harden_agent_version": "2",
+  "dist_artifact": {
+    "gcs_uri": "gs://patch-actions-node-artifacts/dist-artifacts/orgoro/coverage/v3.3/sha256-4f886460c0512a203255c9c7d006fe661754c3897654703272c94471daa439f0.tar.gz",
+    "sha256": "4f886460c0512a203255c9c7d006fe661754c3897654703272c94471daa439f0",
+    "size_bytes": 683364
+  }
 }
